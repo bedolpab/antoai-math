@@ -1,18 +1,18 @@
 [
   {
-    "name": "vp-vnp",
-    "url": "https://github.com/anthropics/formal-math/tree/main/vp-vnp",
-    "date": "2026-11-23"
-  },
-  {
-    "name": "eth",
-    "url": "https://github.com/anthropics/formal-math/tree/main/eth",
-    "date": "2026-10-26"
-  },
-  {
     "name": "3sum-apsp",
     "url": "https://github.com/anthropics/formal-math/tree/main/3sum-apsp",
     "date": "2026-10-05"
+  },
+  {
+    "name": "eth",
+    "url": "https://github.com/anthropics/formal-math/blob/main/eth/paper.pdf",
+    "date": "2026-10-27"
+  },
+  {
+    "name": "vp-vnp",
+    "url": "https://github.com/anthropics/formal-math/blob/main/vp-vnp/paper.pdf",
+    "date": "2026-11-23"
   },
   {
     "name": "zeta23",
