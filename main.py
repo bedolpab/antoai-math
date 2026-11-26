@@ -101,30 +101,44 @@ def get_oai_pdfs(cached_dates=None):
 
 
 def get_ant_papers(cached_dates=None):
-    """Return Anthropic project names, paper links, and dates."""
+    """Return Anthropic project names, paper or folder links, and dates."""
     cached_dates = cached_dates or {}
     folders = github_get(f"{GITHUB_API}/{ANT_REPO}/contents")
 
     results = []
 
     for folder in folders:
-        if folder["type"] != "dir" or folder["name"] == ".github":
+        if folder["type"] != "dir" or folder["name"].startswith("."):
             continue
 
-        paper_path = f"{folder['name']}/paper.pdf"
-        paper = github_get(f"{GITHUB_API}/{ANT_REPO}/contents/{paper_path}")
-        url = paper["html_url"]
+        entries = github_get(f"{GITHUB_API}/{ANT_REPO}/contents/{folder['name']}")
+        pdf = (
+            next(
+                (
+                    e
+                    for e in entries
+                    if isinstance(entries, list)
+                    and e.get("type") == "file"
+                    and e.get("name", "").lower().endswith(".pdf")
+                ),
+                None,
+            )
+            if isinstance(entries, list)
+            else None
+        )
+
+        target_path = pdf["path"] if pdf else folder["path"]
+        url = pdf["html_url"] if pdf else folder["html_url"]
 
         results.append(
             {
                 "name": folder["name"],
                 "url": url,
-                "date": resolve_date(cached_dates, ANT_REPO, paper_path, url),
+                "date": resolve_date(cached_dates, ANT_REPO, target_path, url),
             }
         )
 
     return results
-
 
 def main():
     """Return both repository listings using cached dates when available."""
