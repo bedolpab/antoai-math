@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ANT & OAI Math</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <main class="page page--centered">
+            <div class="page__container">
+                <div class="content">
+                    <header class="status-bar">
+                        <p id="today-summary" class="today-summary"></p>
+                    </header>
+
+                    <div class="arena">
+                        <section class="arena__col" aria-labelledby="ant-heading">
+                            <header class="arena__header">
+                                <div class="arena__title-group">
+                                    <h1 id="ant-heading" class="arena__title">
+                                        <a
+                                            href="https://www.anthropic.com/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            >Anthropic</a
+                                        >
+                                    </h1>
+                                    <a
+                                        class="arena__repo"
+                                        href="https://github.com/anthropics/formal-math"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >[github]</a
+                                    >
+                                </div>
+                                <span id="ant-count" class="arena__count"></span>
+                            </header>
+                            <ul id="ant-list" class="paper-list"></ul>
+                            <div id="ant-pager" class="pager"></div>
+                        </section>
+
+                        <section class="arena__col" aria-labelledby="oai-heading">
+                            <header class="arena__header">
+                                <div class="arena__title-group">
+                                    <h1 id="oai-heading" class="arena__title">
+                                        <a
+                                            href="https://openai.com/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            >OpenAI</a
+                                        >
+                                    </h1>
+                                    <a
+                                        class="arena__repo"
+                                        href="https://github.com/openai/math"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        >[github]</a
+                                    >
+                                </div>
+                                <span id="oai-count" class="arena__count"></span>
+                            </header>
+                            <ul id="oai-list" class="paper-list"></ul>
+                            <div id="oai-pager" class="pager"></div>
+                        </section>
+                    </div>
+
+                    <footer class="footer">
+                        <span>
+                            I made this because it's hard to keep up -
+                            <a
+                                href="https://pablobedolla.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >pablo</a
+                            >
+                        </span>
+                        <span id="last-updated" class="last-updated"></span>
+                    </footer>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

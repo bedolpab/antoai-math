@@ -1,0 +1,38 @@
+name: Update Math Preprints JSON
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate oai.json and ant.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 main.py
+
+      - name: Commit and push changes if JSON files changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add oai.json ant.json meta.json
+          if git diff --staged --quiet; then
+            echo "No changes to oai.json or ant.json."
+          else
+            git commit -m "chore: Update math preprints JSON"
+            git push
+          fi
